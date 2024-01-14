@@ -3410,7 +3410,23 @@ _libs_constants__WEBPACK_IMPORTED_MODULE_2__.INNER_SUB_MENUS_BTN.forEach(functio
 /******/ })()
 ;
 //# sourceMappingURL=main.js.map
-
+function loadGoogleAnalytics(id) {
+    // Google tag (gtag.js)
+    var firstScript= document.getElementsByTagName("script")[0];
+    newScript= document.createElement("script");
+    newScript.async= "";
+    newScript.src= "https://www.googletagmanager.com/gtag/js?id="+ id;
+    firstScript.parentNode.insertBefore(newScript, firstScript);
+  
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', id);
+  }
+  
+  window.addEventListener("load", (event) => {
+     loadGoogleAnalytics("G-KQEZ4N6DG0");
+  });
 function playGame(){
   var tmp = document.querySelector('#game-container').dataset.url;
   document.querySelector('#game-container').innerHTML = `<iframe id="game-element" allowfullscreen="" allow="autoplay; fullscreen; camera; focus-without-user-activation *; monetization; gamepad; keyboard-map *; xr-spatial-tracking; clipboard-write" name="gameFrame" scrolling="no" sandbox="allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-popups allow-popups-to-escape-sandbox allow-presentation allow-scripts allow-same-origin allow-downloads" src="${tmp}"></iframe>`;
